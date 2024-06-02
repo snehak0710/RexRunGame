@@ -1,0 +1,80 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+
+}
+.mainContainer{
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-between; 
+  /* background-color: rgb(245, 45, 45); */
+}
+
+#canvasPlaceholder{
+  width: 1200px;
+  height: 400px;
+  background-color: black;
+  border-color: black;
+}
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+table {
+  border-collapse: collapse;
+  width: 300px;
+  margin: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+#highScoresContainer:empty::before {
+  content: "No high scores yet.";
+  display: block;
+  color: #888;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* #nameContainer{display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-between; } */
+  #bottomContainer{
+    display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: space-between;
+  }
+

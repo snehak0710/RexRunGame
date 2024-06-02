@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rex Run</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <!-- <script>"score.js"</script> -->
+</head>
+<body>
+
+  
+  <div class="mainContainer">
+    <h1 id="myHeader">Rex Run</h1>
+    <div id="canvasPlaceholder"></div>
+    <div id="bottomContainer">
+      <div id="highScoresContainer"></div>
+    <div id= "nameContainer">
+    </div></div>
+   
+    
+  </div>
+    <script src="p5.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <script src="./p5.play.js"></script>
+    <script src="sketch.js"></script>
+
+
+   <script>
+    var storedHighScorersString = localStorage.getItem("highScorers");
+    var storedHighScorers = JSON.parse(storedHighScorersString) || [];
+    
+    // Sort the high scores array based on the scores in descending order
+    storedHighScorers.sort(function(a, b) {
+      return b.score - a.score;
+    });
+    
+    // Get the container element to display high scores
+    var highScoresContainer = document.getElementById("highScoresContainer");
+    
+    // Check if there are high scores to display
+    if (storedHighScorers.length > 0) {
+      // Create a table to display high scores
+      var highScoresTable = document.createElement("table");
+    
+      // Create table header
+      var tableHeader = document.createElement("thead");
+      var headerRow = document.createElement("tr");
+      var nameHeader = document.createElement("th");
+      var scoreHeader = document.createElement("th");
+    
+      nameHeader.textContent = "Name";
+      scoreHeader.textContent = "High Score";
+    
+      headerRow.appendChild(nameHeader);
+      headerRow.appendChild(scoreHeader);
+      tableHeader.appendChild(headerRow);
+      highScoresTable.appendChild(tableHeader);
+    
+      // Create table body
+      var tableBody = document.createElement("tbody");
+    
+      // Iterate through the sorted high scores and create table rows
+      storedHighScorers.forEach(function(highScorer) {
+        var row = document.createElement("tr");
+        var nameCell = document.createElement("td");
+        var scoreCell = document.createElement("td");
+    
+        nameCell.textContent = highScorer.name;
+        scoreCell.textContent = highScorer.score;
+    
+        row.appendChild(nameCell);
+        row.appendChild(scoreCell);
+        tableBody.appendChild(row);
+      });
+    
+      highScoresTable.appendChild(tableBody);
+    
+      // Append the table to the container
+      highScoresContainer.appendChild(highScoresTable);
+    } else {
+      // Display a message if there are no high scores
+      highScoresContainer.textContent = "No high scores yet.";
+    }
+    </script>
+</body>
+</html>
